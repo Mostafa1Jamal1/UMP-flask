@@ -1,0 +1,4 @@
+# .env file must be ignored when pushing to the repo
+.env
+
+__pycache__
