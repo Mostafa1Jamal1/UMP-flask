@@ -2,7 +2,7 @@
 
 # MUST have .env file
 content example:
-`# this file should be pretty safe
+```# this file should be pretty safe
 
 DEBUG = 'True'
 
@@ -19,4 +19,4 @@ MAIL_USE_TLS = 'False'
 MAIL_USE_SSL = 'True'
 
 DATABASE_NAME = 'mydatabase'
-`
+```
