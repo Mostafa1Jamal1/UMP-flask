@@ -1,3 +1,5 @@
 from .models import User, Role
 from .views import blueprint
-from .create import create_app, create_security
+from .configuration import configure_app
+
+__all__ = ["User", "Role", "blueprint", "configure_app"]
