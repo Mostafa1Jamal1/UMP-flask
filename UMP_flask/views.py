@@ -1,21 +1,23 @@
-# unhash what you need
-from flask import (
-    Blueprint,
-    render_template,
-    # render_template_string,
-    # after_this_request,
-    # current_app,
-    # jsonify,
-    # request,
-    # session,
-)
-# from flask_security import (
-#     auth_required,
-#     hash_password,
-#     permissions_accepted
-# )
+"""
+views.py
+~~~~~~~~
 
-blueprint = Blueprint("views", __name__)
+Defines application routes using Flask's Blueprint.
+
+Blueprints:
+    - root: Handles the home page route.
+
+Routes:
+    - /: Renders the default security template.
+
+Dependencies:
+    - flask: Manages views and templates.
+"""
+
+from flask import (Blueprint, render_template)
+
+
+blueprint = Blueprint("root", __name__, template_folder="templates")
 
 
 @blueprint.route("/")
