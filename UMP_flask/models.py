@@ -31,8 +31,14 @@ from mongoengine.fields import (
 from mongoengine import Document
 from flask_security import UserMixin, RoleMixin
 from os import environ
+from dotenv import load_dotenv
 
-db_name = environ.get("DB_NAME", "mydatabase")
+load_dotenv()
+
+if environ.get("TEST") == "True":
+    db_name = "testdb" # For testing purposes
+else:
+    db_name = environ.get("DB_NAME", "mydatabase")
 
 
 class Role(Document, RoleMixin):
