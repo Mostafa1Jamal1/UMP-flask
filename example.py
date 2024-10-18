@@ -9,6 +9,7 @@ if __name__ == '__main__':
     configure_app.basic_auth(app=app, debug=True,
                              SECURITY_REGISTERABLE=True)
     configure_app.with_mail(app=app,
+                            SECURITY_SEND_REGISTER_EMAIL=True,
                             SECURITY_CONFIRMABLE=True,
                             SECURITY_RECOVERABLE=True,
                             SECURITY_CHANGEABLE=True)
