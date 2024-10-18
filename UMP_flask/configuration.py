@@ -54,7 +54,6 @@ class configure_app():
         return app
 
     def with_mail(app: Flask,
-                  SECURITY_SEND_REGISTER_EMAIL: Optional[bool] = False,
                   SECURITY_CONFIRMABLE: Optional[bool] = False,
                   SECURITY_RECOVERABLE: Optional[bool] = False,
                   SECURITY_CHANGEABLE: Optional[bool] = False,
@@ -97,7 +96,7 @@ class configure_app():
         app.config['MAIL_USERNAME'] = env.get("MAIL_USERNAME")
         app.config['MAIL_PASSWORD'] = env.get("MAIL_PASSWORD")
 
-        app.config['SECURITY_SEND_REGISTER_EMAIL'] = SECURITY_SEND_REGISTER_EMAIL
+        app.config['SECURITY_SEND_REGISTER_EMAIL'] = SECURITY_CONFIRMABLE
         app.config["SECURITY_CONFIRMABLE"] = SECURITY_CONFIRMABLE
         app.config["SECURITY_RECOVERABLE"] = SECURITY_RECOVERABLE
         app.config["SECURITY_CHANGEABLE"] = SECURITY_CHANGEABLE
