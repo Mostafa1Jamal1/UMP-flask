@@ -11,6 +11,7 @@ from mongoengine import connect
 from flask_security import (
     Security,
     MongoEngineUserDatastore,
+    uia_email_mapper,
 )
 from .views import blueprint
 from flask_mailman import Mail
@@ -48,10 +49,12 @@ class configure_app():
             raise Exception("SECURITY_PASSWORD_SALT is not set in .env file")
 
         app.config['SECURITY_REGISTERABLE'] = SECURITY_REGISTERABLE
+        app.config['SECURITY_SEND_REGISTER_EMAIL'] = False
         app.register_blueprint(blueprint)
         return app
 
     def with_mail(app: Flask,
+                  SECURITY_SEND_REGISTER_EMAIL: Optional[bool] = False,
                   SECURITY_CONFIRMABLE: Optional[bool] = False,
                   SECURITY_RECOVERABLE: Optional[bool] = False,
                   SECURITY_CHANGEABLE: Optional[bool] = False,
@@ -94,6 +97,7 @@ class configure_app():
         app.config['MAIL_USERNAME'] = env.get("MAIL_USERNAME")
         app.config['MAIL_PASSWORD'] = env.get("MAIL_PASSWORD")
 
+        app.config['SECURITY_SEND_REGISTER_EMAIL'] = SECURITY_SEND_REGISTER_EMAIL
         app.config["SECURITY_CONFIRMABLE"] = SECURITY_CONFIRMABLE
         app.config["SECURITY_RECOVERABLE"] = SECURITY_RECOVERABLE
         app.config["SECURITY_CHANGEABLE"] = SECURITY_CHANGEABLE
