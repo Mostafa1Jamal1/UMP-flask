@@ -1,5 +1,25 @@
 # UMP_flask
 
+---
+
+## Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Installation](#installation)
+3. [Configuration](#configuration)
+   - [Example .env File](#example-env-file)
+4. [Basic Usage](#basic-usage)
+5. [Advanced Usage](#advanced-usage)
+6. [API Documentation](#api-documentation)
+   - [configure_app Class](#configure_app-class)
+   - [Error Handling](#error-handling)
+7. [Deployment Considerations](#deployment-considerations)
+8. [Testing](#testing)
+9. [Contributions](#contributions)
+10. [License](#license)
+
+--- 
+
 ## Project Overview
 
 **UMP_flask** is a Python-based package designed to simplify and speed up the development of user management systems, a core feature in most applications. This package leverages Flask, Flask-Security, and other libraries, offering developers a flexible framework to handle user authentication, roles, permissions, and more.
