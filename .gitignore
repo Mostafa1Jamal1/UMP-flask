@@ -2,3 +2,9 @@
 .env
 
 __pycache__
+
+UMP_flask.egg-info/
+
+build/
+
+dist/
