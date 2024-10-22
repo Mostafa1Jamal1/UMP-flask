@@ -49,27 +49,52 @@ pip install UMP_flask
 
 ---
 
-## Configuration
+### Configuration
 
-UMP_flask requires certain configurations to function properly. You will need to provide a `.env` file with the following configurations:
+To use this package, you must configure a few essential settings, especially for security and database integration. Below is a detailed guide on how to set up the necessary configurations:
 
-### Example `.env` file:
+#### MongoDB Setup
+Before running the application, ensure that a MongoDB server is up and running. You can follow the MongoDB installation and setup guide from the official MongoDB documentation:
 
-```dotenv
-SECRET_KEY=your_secret_key_here
-SECURITY_PASSWORD_SALT=your_password_salt_here
+- [Install MongoDB](https://docs.mongodb.com/manual/installation/)
+- [Configure MongoDB](https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/)
 
+
+#### Environment Variables
+The package relies on several environment variables to operate securely and correctly. You should create a `.env` file in your project root and include the following configurations:
+
+```bash
+# Example .env file
+
+SECRET_KEY=your_secret_key
+SECURITY_PASSWORD_SALT=your_security_password_salt
+
+# MongoDB Configuration
+DB_NAME=mydatabase
+
+# Mail Server Configuration (Required if using email features)
 MAIL_SERVER=smtp.example.com
 MAIL_PORT=587
 MAIL_USE_TLS=True
 MAIL_USE_SSL=False
-MAIL_USERNAME=your_email@example.com
+MAIL_USERNAME=your_email_username
 MAIL_PASSWORD=your_email_password
-
-DB_NAME=mydatabase
 ```
 
-At a minimum, you must provide `SECRET_KEY` and `SECURITY_PASSWORD_SALT`. These are essential for Flask-Security's authentication mechanisms. If you're using the mail functionalities, you also need to configure the `MAIL_*` settings. Similarly, don't forget to set up the database (`DB_NAME`).
+- **SECRET_KEY**: Used for Flask’s session management and other security features. It is required to ensure the security of your app.
+- **SECURITY_PASSWORD_SALT**: A salt used by Flask-Security for password hashing. This is also required for secure password management.
+- **DB_NAME**: The name of your MongoDB database.
+  
+For applications utilizing email features such as confirmation and recovery, the mail server configuration is also necessary.
+
+---
+
+> ⚠️ **DANGER: Keep Your `.env` File Safe!**
+>
+> The `.env` file contains sensitive information like your `SECRET_KEY`, `SECURITY_PASSWORD_SALT`, and email credentials. **Never share this file publicly** or include it in version control systems like Git. Consider using a `.gitignore` file to prevent it from being accidentally committed to your repository.
+>
+> In production environments, use secure methods to manage environment variables, such as secret management tools or environment variable configurations provided by your hosting platform.
+---
 
 Generate your own `SECRET_KEY` in the terminal by
 
@@ -84,8 +109,6 @@ Generate your own password salt by
 $ python3 -c 'import secrets; print(secrets.SystemRandom().getrandbits(128))'
 142886499610136563183651144257829073709
 ```
-
----
 
 ## Basic Usage
 
